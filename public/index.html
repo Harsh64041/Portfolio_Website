@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Vardhan Sharma | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 380px;
+            --primary: #0f172a; /* Slate 900 */
+            --accent: #2563eb;  /* Royal Blue */
+            --bg: #f3f4f6;      /* Cool Gray */
+            --card-bg: #ffffff;
+            --text: #334155;    /* Slate 700 */
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6; 
+            font-size: 16px;
+        }
+
+        /* --- LAYOUT GRID --- */
+        .page-wrapper {
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* --- LEFT SIDEBAR (Profile, Skills, Education) --- */
+        .sidebar {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 30px;
+            position: sticky;
+            top: 30px; /* Stays visible when scrolling */
+            height: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Profile Header inside Sidebar */
+        .profile-header h1 { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 8px; }
+        .profile-header .role { color: var(--accent); font-weight: 600; font-size: 1.1rem; display: block; margin-bottom: 20px; }
+        .profile-header p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 25px; }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+        .contact-links a:hover { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
+
+        /* Sidebar Sections (Skills & Education) */
+        .sidebar-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border); }
+        .sidebar-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--text-light); margin-bottom: 15px; }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-pill { background: #f1f5f9; color: var(--primary); font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 20px; }
+
+        .edu-item { margin-bottom: 20px; }
+        .edu-school { font-weight: 700; color: var(--primary); font-size: 1rem; }
+        .edu-degree { font-size: 0.9rem; color: var(--text); }
+        .edu-year { font-size: 0.8rem; color: var(--text-light); font-family: monospace; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 4px;}
+
+        /* --- RIGHT CONTENT (Projects & Experience) --- */
+        .main-content { display: flex; flex-direction: column; gap: 30px; }
+
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 35px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        .content-title::before { content: ''; display: block; width: 6px; height: 24px; background: var(--accent); border-radius: 4px; }
+
+        /* Experience Items */
+        .work-item { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border); }
+        .work-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .work-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+        .work-role { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .work-company { font-size: 1.1rem; color: var(--accent); font-weight: 600; }
+        .work-date { font-size: 0.9rem; color: var(--text-light); background: #f1f5f9; padding: 4px 10px; border-radius: 20px; }
+        .work-desc { font-size: 1rem; color: var(--text); margin-top: 10px; }
+
+        /* Projects */
+        .search-box {
+            width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 25px; transition: border 0.2s;
+        }
+        .search-box:focus { outline: none; border-color: var(--accent); }
+
+        .project-card {
+            background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-bottom: 20px; transition: transform 0.2s, border-color 0.2s;
+        }
+        .project-card:hover { transform: translateY(-2px); border-color: var(--accent); background: #ffffff; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .project-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px; }
+        .project-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .project-links a {
+            font-size: 0.85rem; font-weight: 600; color: white; background: var(--primary); padding: 6px 12px; border-radius: 6px; text-decoration: none; margin-left: 10px;
+        }
+        .project-links a:hover { background: var(--accent); }
+        .project-tech { font-size: 0.85rem; color: var(--text-light); font-family: monospace; margin-top: 15px; display: block; }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .page-wrapper { grid-template-columns: 1fr; }
+            .sidebar { position: relative; top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        
+        <aside class="sidebar">
+            <div id="profile-section">Loading...</div>
+
+            <div id="contact-section" style="margin-top: 25px;"></div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Skills</h3>
+                <div id="skills-container" class="skills-grid"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Education</h3>
+                <div id="education-container"></div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section class="section-card">
+                <h2 class="content-title">Projects</h2>
+                <input type="text" id="searchBox" class="search-box" placeholder="Filter projects by tech (e.g., Python)..." onkeyup="performSearch()">
+                <div id="projects-container">Loading projects...</div>
+            </section>
+
+            <section class="section-card">
+                <h2 class="content-title">Experience</h2>
+                <div id="work-container">Loading experience...</div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const API = '/api';
+
+        async function loadData() {
+            try {
+                // 1. Fetch Profile Data
+                const resProfile = await fetch(`${API}/profile`);
+                const profile = await resProfile.json();
+
+                // Render Profile Sidebar
+                document.getElementById('profile-section').innerHTML = `
+                    <div class="profile-header">
+                        <h1>${profile.name}</h1>
+                        <span class="role">Backend Developer</span>
+                        <p>${profile.bio}</p>
+                    </div>
+                `;
+
+                document.getElementById('contact-section').innerHTML = `
+                    <div class="contact-links">
+                        <a href="mailto:${profile.email}">📧 ${profile.email}</a>
+                        <a href="${profile.linkedin_link}" target="_blank">💼 LinkedIn Profile</a>
+                        <a href="${profile.github_link}" target="_blank">🐙 GitHub Profile</a>
+                    </div>
+                `;
+
+                // Render Education (Sidebar)
+                document.getElementById('education-container').innerHTML = (profile.education || []).map(edu => `
+                    <div class="edu-item">
+                        <div class="edu-school">${edu.institution}</div>
+                        <div class="edu-degree">${edu.degree}</div>
+                        <span class="edu-year">${edu.year}</span>
+                    </div>
+                `).join('');
+
+                // Render Work (Main Content)
+                document.getElementById('work-container').innerHTML = (profile.work || []).map(job => `
+                    <div class="work-item">
+                        <div class="work-header">
+                            <div>
+                                <span class="work-role">${job.position}</span>
+                                <span style="margin: 0 8px; color: #ccc;">|</span>
+                                <span class="work-company">${job.company}</span>
+                            </div>
+                            <span class="work-date">${job.duration}</span>
+                        </div>
+                        <p class="work-desc">${job.description}</p>
+                    </div>
+                `).join('');
+
+                // 2. Fetch Skills
+                const resSkills = await fetch(`${API}/skills`);
+                const skillsData = await resSkills.json();
+                document.getElementById('skills-container').innerHTML = 
+                    (skillsData.skills || []).map(s => `<span class="skill-pill">${s.name}</span>`).join('');
+
+                // 3. Load Projects (Initial)
+                loadProjects();
+
+            } catch (err) { console.error(err); }
+        }
+
+        async function loadProjects(query = '') {
+            try {
+                const res = await fetch(`${API}/projects?q=${query}`);
+                const data = await res.json();
+                const container = document.getElementById('projects-container');
+
+                if(!data.projects || data.projects.length === 0) {
+                    container.innerHTML = '<p style="color: #888;">No projects found.</p>';
+                    return;
+                }
+
+                container.innerHTML = data.projects.map(p => `
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">${p.title}</div>
+                            <div class="project-links">
+                                ${p.repo_link ? `<a href="${p.repo_link}" target="_blank">Code</a>` : ''}
+                                ${p.demo_link ? `<a href="${p.demo_link}" target="_blank">Live</a>` : ''}
+                            </div>
+                        </div>
+                        <p style="color: #475569;">${p.description}</p>
+                        <span class="project-tech">Stack: ${p.tech_stack || 'N/A'}</span>
+                    </div>
+                `).join('');
+            } catch (err) { console.error(err); }
+        }
+
+        function performSearch() {
+            loadProjects(document.getElementById('searchBox').value);
+        }
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
