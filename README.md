@@ -3,7 +3,7 @@
 A Full Stack Portfolio Playground that exposes a REST API to manage and display personal profile data, skills, work experience, and projects.
 
 - **Live Demo:** https://portfoliowebsite-production-9ce4.up.railway.app/
-- **Resume:** [Insert Your Resume PDF Link Here]
+- **Resume:** https://drive.google.com/file/d/1FxFkLsbzh8RXtTluOA5GISphCP3lJYO1/view?usp=sharing
 
 ---
 
