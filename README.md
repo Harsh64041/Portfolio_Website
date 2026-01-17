@@ -3,7 +3,7 @@
 A dynamic portfolio application built as a backend assessment project. It features a RESTful API built with Node.js and Express that serves personal profile data, skills, projects, and experience stored in a MySQL cloud database.
 
 ### 🔗 **Quick Links**
-- 🌐 **Live Demo:** https://portfoliowebsite-production-9ce4.up.railway.app/
+- 🌐 **Live Demo:** https://portfoliowebsite-production-9ce4.up.railway.app
 - 📄 **My Resume:** https://drive.google.com/file/d/1FxFkLsbzh8RXtTluOA5GISphCP3lJYO1/view?usp=sharing
 
 ---
