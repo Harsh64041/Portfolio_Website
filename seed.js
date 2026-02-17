@@ -4,12 +4,16 @@ require('dotenv').config();
 async function seed() {
     console.log("⏳ Connecting to Database...");
     
+    // 👇 FIXED: Added SSL options here for TiDB
     const connection = await mysql.createConnection({
         host: process.env.DB_HOST || 'localhost',
         user: process.env.DB_USER || 'root',
         password: process.env.DB_PASSWORD ?? '',
         port: process.env.DB_PORT || 3307, 
-        multipleStatements: true 
+        multipleStatements: true,
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
 
     console.log("✅ Connected! Updating Projects...");

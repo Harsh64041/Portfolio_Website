@@ -2,14 +2,18 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD, // Leave empty in .env if you have no password
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME || 'portfolio_db',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 4000,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    // 👇 YE LINE HI "UNDEFINED" HATAEGI
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 module.exports = pool.promise();
