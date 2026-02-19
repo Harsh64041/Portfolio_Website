@@ -2,6 +2,8 @@
 
 A dynamic, data-driven portfolio website built with the MERN stack (MySQL, Express, React, Node.js) and hosted on Render with TiDB Cloud (Serverless MySQL).
 
+**Live Demo:** [https://portfolio-website-iz6c.onrender.com/](https://portfolio-website-iz6c.onrender.com/)
+
 ## 🌟 Features
 * **Dynamic Content:** All data (Profile, Education, Experience, Projects, Skills) is fetched from a TiDB MySQL database.
 * **Modern UI:** Clean, responsive design for all devices.
